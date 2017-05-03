@@ -1,0 +1,23 @@
+<h1>Yay!</h1>
+<%= form_for @music do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :hymn_tune_title %>
+<%= f.text_field :hymn_tune_title %>
+
+<%= f.label :book %>
+<%= f.text_field :book %>
+
+<%= f.label :page_number %>
+<%= f.text_field :page_number %>
+
+<%= f.label :composer %>
+<%= f.text_field :composer %>
+
+<%= f.label :holiday %>
+<%= f.text_field :holiday %>
+
+<%= f.submit %>
+
+<% end %>
