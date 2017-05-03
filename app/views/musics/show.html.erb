@@ -4,4 +4,6 @@
 <h5><%= @music.page_number %></h5>
 <h2><%= @music.composer %></h2>
 <h5><%= @music.holiday %></h5>
-<%= link_to "Delete", @music, method: :delete %>
+<% if logged_in? %>
+  <%= link_to "Delete", @music, method: :delete %>
+<% end %>

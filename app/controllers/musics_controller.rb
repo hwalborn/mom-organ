@@ -6,7 +6,12 @@ class MusicsController < ApplicationController
   end
 
   def new
-    @music = Music.new
+    if logged_in?
+      @music = Music.new
+    else
+      flash[:error] = "You must be logged in to do that"
+      redirect_to musics_path
+    end
   end
 
   def create
