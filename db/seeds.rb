@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+case Rails.env
+when "development"
+  CSV.open('lib/moms-music.csv', :headers => true).map do |x|
+    music = x.to_h
+    Music.create(title: music['title'], hymn_tune_title: music['hymn_tune_title'], book: music['book'], page_number: music['page_number'], composer: music['composer'], holiday: music['holiday'])
+  end
+when "production"
+
+end
