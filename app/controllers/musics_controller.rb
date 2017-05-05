@@ -2,7 +2,8 @@ class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :destroy, :update]
 
   def index
-    @musics = Music.all.sort_by{|music| music.title}
+    @music = Music.new
+    @musics = Music.display(params[:music])
   end
 
   def new

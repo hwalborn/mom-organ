@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome, mom!"
       redirect_to musics_path
     else
-      flash[:error] = "Bad username or password"
+      flash[:error] = "Only my mom can login"
       redirect_to musics_path
     end
   end
