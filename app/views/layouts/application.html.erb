@@ -22,6 +22,10 @@
     <% else %>
     <%= link_to "LogIn", login_path %>
     <% end %>
+    <%= form_for @music, method: :get do |f| %>
+      <%= f.text_field :title %>
+      <%= f.submit "filter" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
