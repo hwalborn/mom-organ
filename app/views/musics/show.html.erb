@@ -5,5 +5,6 @@
 <h2><%= @music.composer %></h2>
 <h5><%= @music.holiday %></h5>
 <% if logged_in? %>
+  <%= link_to "Edit", edit_music_path %>
   <%= link_to "Delete", @music, method: :delete %>
 <% end %>

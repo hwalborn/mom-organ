@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :accounts, only: [:new, :create]
-  resources :musics, only: [:index, :new, :create, :show, :destroy]
+  resources :musics, only: [:index, :new, :create, :show, :destroy, :update, :edit]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
