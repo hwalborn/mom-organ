@@ -1,3 +1,7 @@
+<%= form_for @music, method: :get do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "filter" %>
+<% end %>
 <% @musics.each do |music| %>
   <h1><%= link_to "#{music.title}", music %></h1>
 <% end %>
