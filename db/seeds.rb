@@ -14,5 +14,10 @@ when "development"
     Music.create(title: music['title'], hymn_tune_title: music['hymn_tune_title'], book: music['book'], page_number: music['page_number'], composer: music['composer'], holiday: music['holiday'])
   end
 when "production"
-
+  CSV.open('lib/moms-music.csv', :headers => true).map do |x|
+    music = x.to_h
+    Music.create(title: music['title'], hymn_tune_title: music['hymn_tune_title'], book: music['book'], page_number: music['page_number'], composer: music['composer'], holiday: music['holiday'])
+  end
+  Account.create(username: 'rchildress', password: 'password')
+  Account.create(username: 'holt', password: 'password')
 end
