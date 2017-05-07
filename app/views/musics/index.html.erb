@@ -3,5 +3,5 @@
   <%= f.submit "filter" %>
 <% end %>
 <% @musics.each do |music| %>
-  <h1><%= link_to "#{music.title}", music %></h1>
+  <h1><%= link_to "#{music.title.titleize}", music %></h1>
 <% end %>
