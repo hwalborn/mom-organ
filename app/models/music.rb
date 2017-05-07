@@ -6,7 +6,8 @@ class Music < ApplicationRecord
   end
 
   def self.title_search(title)
-    results = self.where("title = '#{title.titleize}'")
+    search = "%#{title.downcase}%"
+    results = self.where('title LIKE ?', search)
     self.display(nil, results)
   end
 end
