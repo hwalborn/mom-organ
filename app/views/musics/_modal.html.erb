@@ -1,3 +1,4 @@
+<% if music %>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
 
@@ -5,7 +6,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <% if music.title %>
+        <% if music && music.title %>
           <h4 class="modal-title"><%= music.title.titleize %></h4>
         <% else %>
           <h4 class="modal-title">Add Music</h4>
@@ -20,3 +21,4 @@
     </div>
 
   </div>
+<% end %>
