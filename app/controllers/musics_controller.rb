@@ -10,28 +10,12 @@ class MusicsController < ApplicationController
     end
   end
 
-  def new
-    if logged_in?
-      @music = Music.new
-    else
-      flash[:error] = "You must be logged in to create music"
-      redirect_to musics_path
-    end
-  end
-
   def create
-    music = Music.create(music_params)
+    music = Music.downcase_n_save(music_params)
     redirect_to music
   end
 
   def show
-  end
-
-  def edit
-    if !logged_in?
-      flash[:error] = "You must be logged in to edit music"
-      redirect_to musics_path
-    end
   end
 
   def update

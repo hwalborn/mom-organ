@@ -1,0 +1,22 @@
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <% if music.title %>
+          <h4 class="modal-title"><%= music.title.titleize %></h4>
+        <% else %>
+          <h4 class="modal-title">Add Music</h4>
+        <% end %>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'musics/form', locals: {music: music} %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>

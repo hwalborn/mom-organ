@@ -1,10 +1,12 @@
-<h1><%= @music.title %></h1>
+<h1><%= @music.title.titleize %></h1>
 <h5><%= @music.hymn_tune_title %></h5>
 <h2><%= @music.book %></h2>
 <h5><%= @music.page_number %></h5>
 <h2><%= @music.composer %></h2>
 <h5><%= @music.holiday %></h5>
 <% if logged_in? %>
-  <%= link_to "Edit", edit_music_path %>
+  <%= link_to "Edit", "#myModal", data: {toggle: "modal"} %>
   <%= link_to "Delete", @music, method: :delete %>
 <% end %>
+<!-- Modal -->
+<%= render partial: 'musics/modal', locals: {music: @music} %>

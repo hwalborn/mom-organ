@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MomOrgan</title>
+    <title>Organ-Izer</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -18,11 +18,12 @@
     <%= link_to "Show All Music", musics_path %>
     <%= link_to "Save", musics_path(:format => 'csv') %>
     <% if logged_in? %>
-    <%= link_to "Add Music", new_music_path %>
+    <%= link_to "Add Music", "#myModal", data: {toggle: "modal"} %>
     <%= link_to "LogOut", logout_path, method: :delete %>
     <% else %>
     <%= link_to "LogIn", login_path %>
     <% end %>
     <%= yield %>
+    <%= render partial: 'musics/modal', locals: {music: @music} %>
   </body>
 </html>

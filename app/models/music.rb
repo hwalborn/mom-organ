@@ -1,6 +1,13 @@
 
 class Music < ApplicationRecord
 
+  def self.downcase_n_save(music_params)
+    music = Music.new(music_params)
+    music.title.downcase!
+    music.save
+    music
+  end
+
   def self.to_csv
     attributes = ["id", "title", "hymn_tune_title", "book", "page_number", "composer", "holiday"]
     CSV.generate(headers: true) do |csv|
