@@ -16,6 +16,7 @@
     <% end %>
     <h1>Organ-izer</h1>
     <%= link_to "Show All Music", musics_path %>
+    <%= link_to "Save", musics_path(:format => 'csv') %>
     <% if logged_in? %>
     <%= link_to "Add Music", new_music_path %>
     <%= link_to "LogOut", logout_path, method: :delete %>

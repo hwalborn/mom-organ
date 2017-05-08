@@ -4,6 +4,10 @@ class MusicsController < ApplicationController
   def index
     @music = Music.new
     @musics = Music.display(params[:music])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @musics.to_csv }
+    end
   end
 
   def new
