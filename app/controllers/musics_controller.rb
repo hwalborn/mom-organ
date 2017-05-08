@@ -6,7 +6,7 @@ class MusicsController < ApplicationController
     @musics = Music.display(params[:music])
     respond_to do |format|
       format.html
-      format.csv { send_data @musics.to_csv }
+      format.csv { send_data Music.all.to_csv }
     end
   end
 
