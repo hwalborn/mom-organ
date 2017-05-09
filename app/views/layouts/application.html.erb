@@ -9,21 +9,23 @@
   </head>
 
   <body>
+    <div id="header">
+      <h1 id="main-title">Organ-Izer</h1>
+      <%= link_to "Show All Music", musics_path %>
+      <%= link_to "Save", musics_path(:format => 'csv') %>
+      <% if logged_in? %>
+      <%= link_to "LogOut", logout_path, method: :delete %>
+      <% else %>
+      <%= link_to "LogIn", login_path %>
+      <% end %>
+    </div>
     <% if(flash[:error]) %>
     <%= flash[:error] %>
     <% elsif(flash[:notice]) %>
     <%= flash[:notice] %>
     <% end %>
-    <h1>Organ-izer</h1>
-    <%= link_to "Show All Music", musics_path %>
-    <%= link_to "Save", musics_path(:format => 'csv') %>
-    <% if logged_in? %>
-    <%= link_to "Add Music", "#myModal", data: {toggle: "modal"} %>
-    <%= link_to "LogOut", logout_path, method: :delete %>
-    <% else %>
-    <%= link_to "LogIn", login_path %>
-    <% end %>
-    <%= yield %>
-    <%= render partial: 'musics/modal', locals: {music: @music} %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

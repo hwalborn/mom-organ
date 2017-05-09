@@ -1,7 +1,13 @@
-<%= form_for @music, method: :get do |f| %>
+<%= form_for @music, id: :bob, method: :get do |f| %>
+  <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.submit "filter" %>
 <% end %>
-<% @musics.each do |music| %>
-  <h1><%= link_to "#{music.title.titleize}", music %></h1>
+<% if logged_in? %>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Music</button>
 <% end %>
+<% @musics.each do |music| %>
+  <h1 class="music-title"><%= link_to "#{music.title.titleize}", music %></h1>
+  <h2><%= music.composer %></h2>
+<% end %>
+<%= render partial: 'musics/modal', locals: {music: @music} %>
