@@ -24,13 +24,18 @@
       </div>
       <h1 id="main-title">Organ-Izer</h1>
     </div>
-    <% if(flash[:error]) %>
-    <%= flash[:error] %>
-    <% elsif(flash[:notice]) %>
-    <%= flash[:notice] %>
-    <% end %>
     <div class="container">
       <%= yield %>
     </div>
+    <%= javascript_include_tag "https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js" %>
+    <% if flash[:error] %>
+    <script>
+      alertify.error('<h1><%= flash[:error] %></h1>')
+    </script>
+    <% elsif flash[:notice] %>
+    <script>
+      alertify.success('<h1><%= flash[:notice] %></h1>')
+    </script>
+    <% end %>
   </body>
 </html>
