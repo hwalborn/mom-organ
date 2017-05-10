@@ -10,9 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  */
-
+ @import "font-awesome";
  @import "bootstrap-sprockets";
  @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Raleway');
@@ -27,8 +28,25 @@ body {
   text-align: center;
   color: orange;
   font-family: 'Carrois Gothic SC', sans-serif;
+  display: inline-block;
 }
 
 #header {
   background-color: gray;
+  text-align: center;
+  position: relative
+}
+
+.dropdown {
+  float: left;
+  position: absolute;
+  bottom: 0;
+}
+
+.dropdown-toggle:focus {
+  background-color: orange;
+}
+
+.dropdown-toggle {
+  background-color: orange;
 }

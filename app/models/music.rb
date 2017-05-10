@@ -12,7 +12,8 @@ class Music < ApplicationRecord
     attributes = ["id", "title", "hymn_tune_title", "book", "page_number", "composer", "holiday"]
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.each do |music|
+      all.sort_by{|music| music.title}.each do |music|
+        music.title = music.title.titleize
         csv << music.attributes.values_at(*attributes)
       end
     end
