@@ -14,7 +14,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require alertify.min
 //= require bootstrap-sprockets
-$(() => {
-
-})
