@@ -6,3 +6,17 @@
   color: orange;
   font-family: 'Raleway', sans-serif;
 }
+
+#search-bar {
+  display: none;
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 1em 0 1em 0;
+  margin: 1em 0 1em 0;
+  overflow: scroll;
+  width: 75%;
+}

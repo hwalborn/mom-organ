@@ -12,7 +12,8 @@
 //
 //= require_tree .
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require alertify.min
 //= require bootstrap-sprockets
+//= require turbolinks

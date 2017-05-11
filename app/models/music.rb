@@ -20,12 +20,16 @@ class Music < ApplicationRecord
   end
 
   def self.display(search, music=self.all)
-    !!search ? self.title_search(search[:title]) : music.sort_by{|music| music.title}
+    !!search ? self.title_search(search[:search_by], search[:query]) : music.sort_by{|music| music.title}
   end
 
-  def self.title_search(title)
-    search = "%#{title.downcase}%"
-    results = self.where('title LIKE ?', search)
+  def self.title_search(column, title)
+    if column == 'title'
+      search = "%#{title.downcase}%"
+    else
+      search = "%#{title}%"
+    end
+    results = self.where("#{column} LIKE ?", search)
     self.display(nil, results)
   end
 end
