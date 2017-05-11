@@ -1,14 +1,22 @@
-<%= form_for @music, method: :get do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.submit "filter" %>
-<% end %>
+
 <% if logged_in? %>
+<div>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalSearch">Search</button>
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Music</button>
-  <button type="button" id="tester">Click Me</button>
+</div>
 <% end %>
+
+
 <% @musics.each do |music| %>
-  <h1 class="music-title"><%= link_to "#{music.title.titleize}", music %></h1>
-  <h2><%= music.composer %></h2>
+  <div class="col-md-6">
+    <div class="card">
+      <h1 class="music-title"><%= link_to "#{music.title.titleize}", music %></h1>
+      <h2><%= music.composer %></h2>
+    </div>
+  </div>
 <% end %>
-<%= render partial: 'musics/modal', locals: {music: @music} %>
+
+<div>
+  <%= render partial: 'musics/modal', locals: {music: @music} %>
+</div>
+<%= render partial: 'musics/search-modal', locals: {music: @music} %>

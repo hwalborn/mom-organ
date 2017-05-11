@@ -30,7 +30,7 @@ class MusicsController < ApplicationController
 
   private
   def music_params
-    params.require(:music).permit(:title, :hymn_tune_title, :book, :page_number, :composer, :holiday)
+    params.require(:music).permit(:title, :hymn_tune_title, :book, :page_number, :composer, :holiday, :search_by, :query)
   end
 
   def set_music
