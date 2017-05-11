@@ -20,3 +20,25 @@
   overflow: scroll;
   width: 75%;
 }
+
+////// Show stuff //////
+
+#show-container {
+  text-align: center;
+  margin: 5% auto;
+  padding: 3%;
+  background-color: white;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  width: 45%;
+}
+
+#show-container p {
+  font-size: 125%;
+}
+
+#show-container a {
+  font-size: 125%;
+  text-decoration: none;
+  color:inherit;
+  margin: 5% 20%;
+}

@@ -1,9 +1,10 @@
-<%= form_for @account, url: login_path, method: :post do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<div id="form-container">
+  <%= form_for @account, url: login_path, method: :post do |f| %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.text_field :username, placeholder: "username" %>
 
-  <%= f.submit 'Login' %>
-<% end %>
+  <%= f.password_field :password, placeholder: "password" %><br></br>
+
+  <%= f.submit 'Login', class: 'btn btn-info btn-lg', id: "login" %>
+  <% end %>
+</div>

@@ -11,14 +11,14 @@ case Rails.env
 when "development"
   CSV.open('lib/moms-music.csv', :headers => true).map do |x|
     music = x.to_h
-    Music.create(title: music['title'].downcase, hymn_tune_title: music['hymn_tune_title'], book: music['book'], page_number: music['page_number'], composer: music['composer'], holiday: music['holiday'])
+    Music.create(title: music['title'].downcase, hymn_tune_title: music['hymn_tune_title'], book: music['book'].downcase, page_number: music['page_number'], composer: music['composer'].downcase, holiday: music['holiday'])
   end
   Account.create(username: 'rchildress', password: 'password')
   Account.create(username: 'holt', password: 'password')
 when "production"
   CSV.open('lib/moms-music.csv', :headers => true).map do |x|
     music = x.to_h
-    Music.create(title: music['title'].downcase, hymn_tune_title: music['hymn_tune_title'], book: music['book'], page_number: music['page_number'], composer: music['composer'], holiday: music['holiday'])
+    Music.create(title: music['title'].downcase, hymn_tune_title: music['hymn_tune_title'], book: music['book'].downcase, page_number: music['page_number'], composer: music['composer'].downcase, holiday: music['holiday'])
   end
   Account.create(username: 'rchildress', password: 'password')
   Account.create(username: 'holt', password: 'password')

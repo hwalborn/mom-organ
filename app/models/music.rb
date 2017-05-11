@@ -3,6 +3,8 @@ class Music < ApplicationRecord
 
   def self.downcase_n_save(music_params)
     music = Music.new(music_params)
+    music.composer.downcase!
+    music.book.downcase!
     music.title.downcase!
     music.save
     music
@@ -24,11 +26,7 @@ class Music < ApplicationRecord
   end
 
   def self.title_search(column, title)
-    if column == 'title'
-      search = "%#{title.downcase}%"
-    else
-      search = "%#{title}%"
-    end
+    search = "%#{title.downcase}%"
     results = self.where("#{column} LIKE ?", search)
     self.display(nil, results)
   end
