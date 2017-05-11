@@ -11,7 +11,9 @@ case Rails.env
 when "development"
   CSV.open('lib/moms-music.csv', :headers => true).map do |x|
     music = x.to_h
-    Music.create(title: music['title'].downcase, hymn_tune_title: music['hymn_tune_title'], book: music['book'].downcase, page_number: music['page_number'], composer: music['composer'].downcase, holiday: music['holiday'])
+    saved_music = Music.new(title: music['title'].downcase, hymn_tune_title: music['hymn_tune_title'], book: music['book'].downcase, page_number: music['page_number'], composer: music['composer'].downcase, holiday: music['holiday'])
+    saved_music.hymn_tune_title ? saved_music.hymn_tune_title.downcase! : nil
+    saved_music.save
   end
   Account.create(username: 'rchildress', password: 'password')
   Account.create(username: 'holt', password: 'password')

@@ -5,6 +5,9 @@
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Music</button>
 </div>
 <% end %>
+<!-- <%= form_tag '/', method: :get %>
+<%= select_tag "music[alpha]", options_for_select(('A'..'Z').to_a) %>
+<%= submit_tag 'search' %> -->
 
 
 <% @musics.each do |music| %>
