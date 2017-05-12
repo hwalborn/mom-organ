@@ -15,7 +15,9 @@
         <ul class="dropdown-menu">
           <li><%= link_to "Show All Music", musics_path %></li>
           <li><%= link_to "Save", musics_path(:format => 'csv') %></li>
+          <li><%= link_to "Search", "#", data: {toggle: "modal", target: "#modalSearch"} %></li>
           <% if logged_in? %>
+          <li><%= link_to "Add Music", "#", data: {toggle: "modal", target: "#myModal"} %></li>
           <li><%= link_to "LogOut", logout_path, method: :delete %></li>
           <% else %>
           <li><%= link_to "LogIn", login_path %></li>
@@ -28,6 +30,10 @@
     <div></div>
 
     <%= yield %>
+    <div>
+      <%= render partial: 'musics/modal', locals: {music: @music_new} %>
+    </div>
+    <%= render partial: 'musics/search-modal', locals: {music: @music} %>
     <%= javascript_include_tag "https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js" %>
     <% if flash[:error] %>
     <script>

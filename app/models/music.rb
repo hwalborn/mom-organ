@@ -1,4 +1,3 @@
-
 class Music < ApplicationRecord
 
   def self.downcase_n_save(music_params)
@@ -26,8 +25,8 @@ class Music < ApplicationRecord
     !!search ? self.title_search(search[:search_by], search[:query]) : music.sort_by{|music| music.title}
   end
 
-  def self.title_search(column, title)
-    search = "%#{title.downcase}%"
+  def self.title_search(column, query)
+    search = "%#{query.downcase}%"
     col = column.gsub(' ', '_')
     results = self.where("#{col} LIKE ?", search)
     self.display(nil, results)

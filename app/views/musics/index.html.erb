@@ -1,10 +1,3 @@
-
-<% if logged_in? %>
-<div>
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalSearch">Search</button>
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Music</button>
-</div>
-<% end %>
 <!-- <%= form_tag '/', method: :get %>
 <%= select_tag "music[alpha]", options_for_select(('A'..'Z').to_a) %>
 <%= submit_tag 'search' %> -->
@@ -18,8 +11,3 @@
     </div>
   </div>
 <% end %>
-
-<div>
-  <%= render partial: 'musics/modal', locals: {music: @music} %>
-</div>
-<%= render partial: 'musics/search-modal', locals: {music: @music} %>

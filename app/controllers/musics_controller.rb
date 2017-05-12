@@ -1,8 +1,8 @@
 class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :destroy, :update, :edit]
+  before_action :create_new
 
   def index
-    @music = Music.new
     @musics = Music.display(params[:music])
     respond_to do |format|
       format.html
@@ -35,5 +35,9 @@ class MusicsController < ApplicationController
 
   def set_music
     @music = Music.find(params[:id])
+  end
+
+  def create_new
+    @music_new = Music.new
   end
 end
