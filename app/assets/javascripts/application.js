@@ -23,18 +23,18 @@ if(window.location.pathname === '/musics'){
   var lastScrollTop = 0
   var delta = 5
   var navbarHeight = $('header').outerHeight()
-  $(window).scroll((e) => {
+  $(window).scroll(function(e) {
     didScroll = true
   })
 
-  setInterval(() => {
+  setInterval(function() {
     if(didScroll) {
       hasScrolled()
       didScroll = false
     }
   }, 250)
 
-  const hasScrolled = () => {
+  function hasScrolled()  {
     let st = $(this).scrollTop()
     if(Math.abs(lastScrollTop - st) <= delta)
     return
