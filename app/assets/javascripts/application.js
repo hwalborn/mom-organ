@@ -35,7 +35,7 @@ if(window.location.pathname === '/musics'){
   }, 250)
 
   function hasScrolled()  {
-    let st = $(this).scrollTop()
+    var st = $(this).scrollTop()
     if(Math.abs(lastScrollTop - st) <= delta)
     return
     if(st > lastScrollTop && st > navbarHeight){
