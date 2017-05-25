@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div id="header">
+    <header id="header">
       <div class="dropdown">
         <button id="custom-btn" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bars" aria-hidden="true"></i></button>
         <ul class="dropdown-menu">
@@ -25,7 +25,7 @@
         </ul>
       </div>
       <h1 id="main-title">Organ-Izer</h1>
-    </div>
+    </header>
     <div id="space"></div>
     <div></div>
 
@@ -33,7 +33,7 @@
     <div>
       <%= render partial: 'musics/modal', locals: {music: @music_new} %>
     </div>
-    <%= render partial: 'musics/search-modal', locals: {music: @music} %>
+    <%= render partial: 'musics/search-modal', locals: {music: @music_new} %>
     <%= javascript_include_tag "https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js" %>
     <% if flash[:error] %>
     <script>

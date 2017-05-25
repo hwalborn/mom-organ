@@ -1,22 +1,25 @@
-<%= form_for music do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
+<div id="form">
+  <%= form_for music do |f| %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br></br>
 
-<%= f.label :hymn_tune_title %>
-<%= f.text_field :hymn_tune_title %>
+  <%= f.label :hymn_tune_title %><br>
+  <%= f.text_field :hymn_tune_title %><br></br>
 
-<%= f.label :book %>
-<%= f.text_field :book %>
+  <%= f.label :book %><br>
+  <%= f.text_field :book %><br></br>
 
-<%= f.label :page_number %>
-<%= f.text_field :page_number %>
+  <%= f.label :page_number %><br>
+  <%= f.text_field :page_number %><br></br>
 
-<%= f.label :composer %>
-<%= f.text_field :composer %>
+  <%= f.label :composer %><br>
+  <%= f.text_field :composer %><br></br>
 
-<%= f.label :holiday %>
-<%= f.text_field :holiday %>
+  <%= f.label :holiday %><br>
+  <%= f.text_field :holiday %><br></br>
 
-<%= f.submit %>
+  <%= f.submit %>
 
-<% end %>
+  <% end %>
+
+</div>

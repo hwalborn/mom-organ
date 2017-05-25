@@ -19,6 +19,13 @@
   margin: 1em 0 1em 0;
   overflow: scroll;
   width: 75%;
+  position: relative;
+}
+
+.col-md-6 {
+  text-align: center;
+  margin: auto;
+  position: absolute;
 }
 
 ////// Show stuff //////
@@ -41,4 +48,12 @@
   text-decoration: none;
   color:inherit;
   margin: 5% 20%;
+}
+
+#form {
+  text-align: center;
+}
+
+.modal-title {
+  text-align: center;
 }
