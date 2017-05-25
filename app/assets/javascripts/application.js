@@ -17,12 +17,12 @@
 //= require alertify.min
 //= require bootstrap-sprockets
 //= require turbolinks
+var didScroll
+var lastScrollTop = 0
+var delta = 5
+var navbarHeight = $('header').outerHeight()
 
 if(window.location.pathname === '/musics'){
-  var didScroll
-  var lastScrollTop = 0
-  var delta = 5
-  var navbarHeight = $('header').outerHeight()
   $(window).scroll(function(e) {
     didScroll = true
   })
