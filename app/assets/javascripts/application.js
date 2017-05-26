@@ -22,7 +22,7 @@ var lastScrollTop = 0
 var delta = 5
 var navbarHeight = $('header').outerHeight()
 
-if(window.location.pathname === '/musics'){
+if(window.location.pathname.length < 10){
   $(window).scroll(function(e) {
     didScroll = true
   })
