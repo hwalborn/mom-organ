@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def index?
-    request.url.split('/').last.length >= 4
+    request.url.split('/').last.length >= 5
   end
 end
