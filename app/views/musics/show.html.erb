@@ -9,6 +9,9 @@
   <% if @music.holiday %>
     <h5>Holiday: <%= @music.holiday %></h5>
   <% end %>
+  <% if @spotify %>
+    <%= content_tag(:iframe, '', src: @spotify, width: 300, height: 80, allowtransparency: true) %>
+  <% end %>
   <% if logged_in? %>
     <%= link_to "Edit", "#myModal", data: {toggle: "modal"} %>
     <%= link_to "Delete", @music, method: :delete %>

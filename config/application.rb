@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+require 'rspotify'
 require 'csv'
 require 'rails/all'
 

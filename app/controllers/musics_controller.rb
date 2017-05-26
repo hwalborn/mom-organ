@@ -16,6 +16,11 @@ class MusicsController < ApplicationController
   end
 
   def show
+    uri = RSpotify::Track.search(@music.title)[0]
+    if(uri)
+      uri = uri.uri
+      @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
+    end
   end
 
   def update
