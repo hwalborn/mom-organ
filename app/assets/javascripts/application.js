@@ -23,6 +23,7 @@ var delta = 5
 var navbarHeight = $('header').outerHeight()
 
 if(window.location.pathname.length < 9){
+  // alert('hi')
   $(window).scroll(function(e) {
     didScroll = true
   })
