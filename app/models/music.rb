@@ -21,6 +21,16 @@ class Music < ApplicationRecord
     end
   end
 
+  def self.authorize
+    # RestClient.post('https://accounts.spotify.com/api/token',
+    #     {'grant_type' => 'client_credentials'},
+    #     {"Authorization" => "Basic #{grant}"})
+    RestClient.get "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=https%3A%2F%2Forgan-izer.herokuapp.com%2" do |response, request, result|
+      byebug
+
+    end
+  end
+
   def self.display(search, music=self.all)
     !!search ? self.title_search(search[:search_by], search[:query]) : music.sort_by{|music| music.title}
   end

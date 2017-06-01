@@ -16,12 +16,14 @@ class MusicsController < ApplicationController
   end
 
   def show
-    # byebug
-    # uri = RSpotify::Track.search(@music.title)[0]
-    # if(uri)
-    #   uri = uri.uri
-    #   @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
-    # end
+    Music.authorize
+    # RestClient.get "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=https%3A%2F%2Forgan-izer.herokuapp.com%2"
+    RestClient::Request.execute(method: :get, url: "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=https%3A%2F%2Forgan-izer.herokuapp.com%2")
+    uri = RSpotify::Track.search(@music.title)[0]
+    if(uri)
+      uri = uri.uri
+      @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
+    end
   end
 
   def update

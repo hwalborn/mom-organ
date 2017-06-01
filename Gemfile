@@ -36,6 +36,7 @@ gem 'font-awesome-rails'
 gem 'jquery-turbolinks'
 gem 'rspotify'
 gem 'rest-client'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
