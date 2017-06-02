@@ -37,6 +37,7 @@ gem 'jquery-turbolinks'
 gem 'rspotify'
 gem 'rest-client'
 gem 'figaro'
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

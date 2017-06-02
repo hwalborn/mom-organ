@@ -1,3 +1,5 @@
+require 'net/http'
+
 class Music < ApplicationRecord
 
   def self.downcase_n_save(music_params)
@@ -25,10 +27,17 @@ class Music < ApplicationRecord
     # RestClient.post('https://accounts.spotify.com/api/token',
     #     {'grant_type' => 'client_credentials'},
     #     {"Authorization" => "Basic #{grant}"})
-    RestClient.get "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=https%3A%2F%2Forgan-izer.herokuapp.com%2" do |response, request, result|
-      byebug
-
-    end
+    # grant = Base64.strict_encode64("#{Rails.application.secrets.client_id}:#{Rails.application.secrets.client_secret}")
+    # resp = RestClient.get "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback"
+    # url = URI.parse("https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback")
+    # req = Net::HTTP::Get.new(url.to_s)
+    # res = Net::HTTP.start(url.host, url.port) {|http|
+    #   byebug
+    #   http.request(req)
+    # }
+    response = HTTParty.get("https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback")
+    byebug
+    # token = resp.cookies["csrf_token"]
   end
 
   def self.display(search, music=self.all)
