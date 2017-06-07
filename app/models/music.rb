@@ -24,20 +24,14 @@ class Music < ApplicationRecord
   end
 
   def self.authorize
-    # RestClient.post('https://accounts.spotify.com/api/token',
-    #     {'grant_type' => 'client_credentials'},
-    #     {"Authorization" => "Basic #{grant}"})
-    # grant = Base64.strict_encode64("#{Rails.application.secrets.client_id}:#{Rails.application.secrets.client_secret}")
-    # resp = RestClient.get "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback"
-    # url = URI.parse("https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback")
-    # req = Net::HTTP::Get.new(url.to_s)
-    # res = Net::HTTP.start(url.host, url.port) {|http|
-    #   byebug
-    #   http.request(req)
-    # }
-    response = HTTParty.get("https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback")
-    byebug
-    # token = resp.cookies["csrf_token"]
+    # make a change
+    grant = Base64.strict_encode64("#{ENV["CLIENT_ID"]}:#{ENV["CLIENT_SECRET"]}")
+    RestClient.post("https://accounts.spotify.com/api/token", body = {grant_type: "client_credentials"}, headers={'Authorization' => "Basic #{grant}"})
+  end
+
+  def self.get_uri(music, token)
+    music = RestClient.get("https://api.spotify.com/v1/search?q=#{music.title.gsub(' ', '%20')}&type=track&limit=1", headers={'Authorization' => "Bearer #{token}"})
+    JSON.parse(music)['tracks']['items'][0]['artists'][0]['uri']
   end
 
   def self.display(search, music=self.all)
