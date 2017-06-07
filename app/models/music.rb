@@ -24,6 +24,7 @@ class Music < ApplicationRecord
   end
 
   def self.authorize
+    # make a change
     grant = Base64.strict_encode64("#{ENV["CLIENT_ID"]}:#{ENV["CLIENT_SECRET"]}")
     RestClient.post("https://accounts.spotify.com/api/token", body = {grant_type: "client_credentials"}, headers={'Authorization' => "Basic #{grant}"})
   end
