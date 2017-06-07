@@ -16,12 +16,12 @@ class MusicsController < ApplicationController
   end
 
   def show
-    # resp = Music.authorize
-    # token = JSON.parse(resp)['access_token']
-    # uri = Music.get_uri(@music, token)
-    # if(uri)
-    #   @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
-    # end
+    resp = Music.authorize
+    token = JSON.parse(resp)['access_token']
+    uri = Music.get_uri(@music, token)
+    if(uri)
+      @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
+    end
   end
 
   def update
