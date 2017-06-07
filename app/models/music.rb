@@ -24,8 +24,8 @@ class Music < ApplicationRecord
   end
 
   def self.authorize
-    # grant = Base64.strict_encode64("#{ENV["CLIENT_ID"]}:#{ENV["CLIENT_SECRET"]}")
-    grant = Base64.strict_encode64("#{Rails.application.secrets.client_id}:#{Rails.application.secrets.client_secret}")
+    grant = Base64.strict_encode64("#{ENV["CLIENT_ID"]}:#{ENV["CLIENT_SECRET"]}")
+    # grant = Base64.strict_encode64("#{Rails.application.secrets.client_id}:#{Rails.application.secrets.client_secret}")
     RestClient.post("https://accounts.spotify.com/api/token", body = {grant_type: "client_credentials"}, headers={'Authorization' => "Basic #{grant}"})
   end
 
