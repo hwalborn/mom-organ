@@ -16,17 +16,11 @@ class MusicsController < ApplicationController
   end
 
   def show
-    byebug
-    if spotify_logged_in?
-      # redirect_to "https://accounts.spotify.com/authorize/?client_id=427aca466f7b4a67bf78a85d5af51b3a&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback"
-      # Music.authorize
-      RestClient.get "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=https%3A%2F%2Forgan-izer.herokuapp.com%2"
-      # RestClient::Request.execute(method: :get, url: "https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=https%3A%2F%2Forgan-izer.herokuapp.com%2")
-      uri = RSpotify::Track.search(@music.title)[0]
-      if(uri)
-        uri = uri.uri
-        @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
-      end
+    resp = Music.authorize
+    token = JSON.parse(resp)['access_token']
+    uri = Music.get_uri(@music, token)
+    if(uri)
+      @spotify = "https://open.spotify.com/embed?uri=#{uri}&theme=white&view=coverart"
     end
   end
 
@@ -38,12 +32,6 @@ class MusicsController < ApplicationController
   def destroy
     Music.delete(@music)
     redirect_to musics_path
-  end
-
-  def spotify
-    resp = Music.post_authorize(params['code'])
-    session[:access_token] = JSON.parse(resp)['access_token']
-    byebug
   end
 
   private

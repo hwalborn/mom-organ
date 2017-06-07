@@ -23,18 +23,14 @@ class Music < ApplicationRecord
     end
   end
 
-  def self.post_authorize(token)
+  def self.authorize
     grant = Base64.strict_encode64("#{Rails.application.secrets.client_id}:#{Rails.application.secrets.client_secret}")
-    options = {grant_type: 'authorization_code',
-               code: token,
-               redirect_uri: 'http://localhost:3000/callback'}
-    RestClient.post("https://accounts.spotify.com/api/token", body=options, headers={'Authorization' => "Basic #{grant}"})
+    RestClient.post("https://accounts.spotify.com/api/token", body = {grant_type: "client_credentials"}, headers={'Authorization' => "Basic #{grant}"})
   end
 
-  def self.authorize
-    response = RestClient.get("https://accounts.spotify.com/authorize/?client_id=427aca466f7b4a67bf78a85d5af51b3a&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback")
-    # response = RestClient.get("https://accounts.spotify.com/authorize/?client_id=#{Rails.application.secrets.client_id}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fcallback")
-    byebug
+  def self.get_uri(music, token)
+    music = RestClient.get("https://api.spotify.com/v1/search?q=#{music.title.gsub(' ', '%20')}&type=track&limit=1", headers={'Authorization' => "Bearer #{token}"})
+    JSON.parse(music)['tracks']['items'][0]['artists'][0]['uri']
   end
 
   def self.display(search, music=self.all)
