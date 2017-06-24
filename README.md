@@ -1,24 +1,14 @@
-# README
+# Organizer
+This is an application for Rachel Childress to enter Organ music
+into a database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version: 2.3.1
 
-Things you may want to cover:
+## Here are some features:
++ Seeded database through a parsed CSV
++ Spotify API integration
++ Only an authorized user (my mom) can make changes
++ Ability to save a CSV of the SQL database
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Feel free to browse and check out all the music
+that is here!
