@@ -43,7 +43,7 @@ class Music < ApplicationRecord
   def self.title_search(column, query)
     search = "%#{query.downcase}%"
     col = column.gsub(' ', '_')
-    results = self.where("#{col} LIKE ?", search)
+    results = self.where("lower(#{col}) LIKE ?", search)
     self.display(nil, results)
   end
 end
