@@ -16,7 +16,7 @@ class MusicsController < ApplicationController
   end
 
   def show
-    resp = Music.authorize
+    # resp = Music.authorize
     # token = JSON.parse(resp)['access_token']
     # uri = Music.get_uri(@music, token)
     # if(!!uri)
